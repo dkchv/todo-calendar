@@ -9,6 +9,7 @@ var _ = require('lodash');
 var vsource = require('vinyl-source-stream');
 var buffer = require('vinyl-buffer');
 var gulpif = require('gulp-if');
+var jadeify = require('jadeify');
 
 module.exports = function(gulp, plugins, args, config, taskTarget, browserSync) {
   var dirs = config.directories;
@@ -23,7 +24,8 @@ module.exports = function(gulp, plugins, args, config, taskTarget, browserSync) 
         entries: [entry],
         debug: true,
         transform: [
-          envify  // Sets NODE_ENV for better optimization of npm packages
+          envify,  // Sets NODE_ENV for better optimization of npm packages
+          jadeify
         ]
       };
 
