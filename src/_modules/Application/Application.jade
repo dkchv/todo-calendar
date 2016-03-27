@@ -2,14 +2,18 @@
     .todo-header-title Todo calendar
     .todo-header-body
         .todo-header-buttons
-            button Добавить
-            button Обновить
+            button.todo-header-buttons-add Добавить
+            button.todo-header-buttons-update Обновить
         .todo-filter
             input.todo-filter-input(placeholder="Событие, дата, участник", pattern=".*\\S.*", required)
             .todo-filter-clear
 
 .todo-calendar
-    .todo-calendar-actions Actions
+    .todo-date
+        .todo-date-prev
+        .todo-date-date Март 2016
+        .todo-date-next
+        .todo-date-today сегодня
     .todo-calendar-content
         .todo-calendar-week
             .todo-day.todo-day-selected

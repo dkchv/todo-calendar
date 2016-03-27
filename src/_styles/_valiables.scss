@@ -6,12 +6,13 @@ $header-shadow-h: 5px;
 
 $buttons-color: $c_active;
 
-$container-p: 20px 40px;
+$container-p: 20px;
 
 $calendar-corners: 3px;
 
 $day-border-c: rgba(#d9d9d9, 0.5);
 $day-weekend-bg: #f6f6f6;
+$day-hover-bg: darken($day-weekend-bg, 1);
 $day-selected-c: #86c9fd;
 $day-today-c: #fde586;
 $day-title-fs: 10px;
