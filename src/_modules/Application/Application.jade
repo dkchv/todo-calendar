@@ -16,7 +16,7 @@
         .todo-date-today сегодня
     .todo-calendar-content
         .todo-calendar-week
-            .todo-day.todo-day-selected
+            .todo-day
                 .todo-day-num 1
             .todo-day
                 .todo-day-num 2
@@ -42,8 +42,16 @@
                     .todo-item-with
                         span dkchv
                         span Петр Иваныч
-            .todo-day
+            .todo-day.todo-day-selected
                 .todo-day-num 4
+                .todo-form-add
+                    .todo-form-close
+                    input.todo-form-add-input-title(placeholder="Событие")
+                    input.todo-form-add-input-date(placeholder="День, месяц, год")
+                    input.todo-form-add-input-people(placeholder="Имена участников")
+                    textarea.todo-form-add-input-description(placeholder="Описание")
+                    button.todo-form-add-button-submit Готово
+                    button.todo-form-add-button-delete Удалить
             .todo-day
                 .todo-day-num 5
             .todo-day
@@ -59,7 +67,7 @@
                 .todo-day-num 3
             .todo-day
                 .todo-day-num 4
-            .todo-day.todo-day-selected
+            .todo-day
                 .todo-day-num 5
             .todo-day
                 .todo-day-num 6
