@@ -16,7 +16,7 @@
     "afterEach": true
   },
   "rules": {
-    "indent": [2, 2],
+    "indent": [4, 4],
     "valid-jsdoc": 0,
     "brace-style": [1, "stroustrup"],
     "no-constant-condition": 1,
