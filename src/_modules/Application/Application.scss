@@ -147,6 +147,10 @@
     font-size: $day-title-fs;
 }
 
+.todo-day-active {
+    background-color: rgba($day-active-c, 0.25);
+}
+
 .todo-day-today {
     background-color: rgba($day-today-c, 0.25) !important;
     border: 2px solid $day-today-c;
@@ -154,11 +158,11 @@
     z-index: 2;
 
     &:last-child {
-        margin-right: -1px;
+        margin-right: -2px;
     }
 
     &:first-child {
-        margin-left: 0;
+        margin-left: -1px;
     }
 }
 
@@ -169,11 +173,49 @@
     z-index: 3;
 
     &:last-child {
-        margin-right: -1px;
+        margin-right: -2px;
     }
 
     &:first-child {
-        margin-left: 0;
+        margin-left: -1px;
+    }
+}
+
+// ----- items
+
+.todo-item {
+
+}
+
+.todo-item-title {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.todo-item-with {
+    font-size: 10px;
+    span {
+        font-size: inherit;
+        cursor: pointer;
+
+        &:hover {
+            color: $item-hover-c;
+        }
+
+        &:before {
+            content: "@";
+            display: inline;
+        }
+
+        &:after {
+            content: ", ";
+            display: inline;
+        }
+
+        &:last-child:after {
+            display: none;
+        }
     }
 }
 

@@ -1,8 +1,10 @@
+$c_active: #0271c7;
+
 $header-c: #f4f4f4;
 $header-shadow-c: #cecece;
 $header-shadow-h: 5px;
 
-$buttons-color: #0271c7;
+$buttons-color: $c_active;
 
 $container-p: 20px 40px;
 
@@ -10,12 +12,12 @@ $calendar-corners: 3px;
 
 $day-border-c: rgba(#d9d9d9, 0.5);
 $day-weekend-bg: #f6f6f6;
-
 $day-selected-c: #86c9fd;
 $day-today-c: #fde586;
-
 $day-title-fs: 10px;
+$day-active-c: #24ec1b;
 
+$item-hover-c: $c_active;
 //breakpoints
 
 $br-title-wrap: 1050px;
