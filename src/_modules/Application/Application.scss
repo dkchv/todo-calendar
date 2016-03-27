@@ -1,7 +1,7 @@
 .todo-header {
-    background-color: $header-color;
+    background-color: $header-c;
     width: 100%;
-    padding: 20px 40px;
+    padding: $container-p;
     position: relative;
     margin-bottom: $header-shadow-h;
     //box-shadow: 0 $header-shadow-h $header-shadow-h #ccc;
@@ -32,6 +32,113 @@
     justify-content: space-between;
 }
 
-.todo-header-buttons {
+// -------- calendar ---------
 
+.todo-calendar {
+    width: 100%;
+    padding: $container-p;
+}
+
+.todo-calendar-week {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+
+    &:first-child {
+
+        & .todo-day:before {
+            display: inline;
+            background-color: #ccc;
+            font-size: $day-title-fs;
+        }
+
+        & .todo-day:nth-child(1):before {
+            content: "Понедельник, ";
+        }
+
+        & .todo-day:nth-child(2):before {
+            content: "Вторник, ";
+        }
+
+        & .todo-day:nth-child(3):before {
+            content: "Среда, ";
+        }
+
+        & .todo-day:nth-child(4):before {
+            content: "Четверг, ";
+        }
+
+        & .todo-day:nth-child(5):before {
+            content: "Пятница, ";
+        }
+
+        & .todo-day:nth-child(6):before {
+            content: "Суббота, ";
+        }
+
+        & .todo-day:nth-child(7):before {
+            content: "Воскресенье, ";
+        }
+    }
+}
+
+.todo-day {
+    border: 1px solid $day-border-c;
+    flex: 1 100%;
+    min-height: 100px;
+    margin-right:-1px;
+    margin-bottom:-1px;
+    margin-left: auto;
+    margin-top: auto;
+    padding: 8px;
+    z-index: 1;
+
+    &:last-child {
+        margin-right: 0;
+    }
+
+    &:nth-child(6), &:nth-child(7) {
+        background-color: $day-weekend-bg;
+    }
+
+    // fix for 2px border
+    //& + .todo-day-selected,
+    //& + .todo-day-toady {
+    //    margin-right: -2px;
+    //}
+}
+
+.todo-day-num {
+    display: inline;
+    font-size: $day-title-fs;
+}
+
+.todo-day-today {
+    background-color: rgba($day-today-c, 0.25) !important;
+    border: 2px solid $day-today-c;
+    margin: -1px -2px -2px -1px;
+    z-index: 2;
+
+    &:last-child {
+        margin-right: -1px;
+    }
+
+    &:first-child {
+        margin-left: 0;
+    }
+}
+
+.todo-day-selected {
+    background-color: rgba($day-selected-c, 0.25) !important;
+    border: 2px solid $day-selected-c;
+    margin: -1px -2px -2px -1px;
+    z-index: 3;
+
+    &:last-child {
+        margin-right: -1px;
+    }
+
+    &:first-child {
+        margin-left: 0;
+    }
 }
