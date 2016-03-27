@@ -4,8 +4,9 @@
         .todo-header-buttons
             button Добавить
             button Обновить
-        .todo-header-filter
-            input.todo-header-filter-input(placeholder="Событие, дата, участник")
+        .todo-filter
+            input.todo-filter-input(placeholder="Событие, дата, участник", pattern=".*\\S.*", required)
+            .todo-filter-clear
 
 .todo-calendar
     .todo-calendar-actions Actions

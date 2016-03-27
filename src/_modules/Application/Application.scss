@@ -48,36 +48,57 @@
 
         & .todo-day:before {
             display: inline;
-            background-color: #ccc;
+            //background-color: #ccc;
             font-size: $day-title-fs;
         }
 
         & .todo-day:nth-child(1):before {
-            content: "Понедельник, ";
+            content: "ПН, ";
+            @media screen and (min-width: $br-title-wrap) {
+                content: "Понедельник, ";
+            }
         }
 
         & .todo-day:nth-child(2):before {
-            content: "Вторник, ";
+            content: "ВТ, ";
+            @media screen and (min-width: $br-title-wrap) {
+                content: "Вторник, ";
+            }
         }
 
         & .todo-day:nth-child(3):before {
-            content: "Среда, ";
+            content: "СР, ";
+            @media screen and (min-width: $br-title-wrap) {
+                content: "Среда, ";
+            }
         }
 
         & .todo-day:nth-child(4):before {
-            content: "Четверг, ";
+            content: "ЧТ, ";
+            @media screen and (min-width: $br-title-wrap) {
+                content: "Четверг, ";
+            }
         }
 
         & .todo-day:nth-child(5):before {
-            content: "Пятница, ";
+            content: "ПТ, ";
+            @media screen and (min-width: $br-title-wrap) {
+                content: "Пятница, ";
+            }
         }
 
         & .todo-day:nth-child(6):before {
-            content: "Суббота, ";
+            content: "СБ, ";
+            @media screen and (min-width: $br-title-wrap) {
+                content: "Суббота, ";
+            }
         }
 
         & .todo-day:nth-child(7):before {
-            content: "Воскресенье, ";
+            content: "ВС, ";
+            @media screen and (min-width: $br-title-wrap) {
+                content: "Воскресенье, ";
+            }
         }
     }
 }
@@ -90,7 +111,7 @@
     margin-bottom:-1px;
     margin-left: auto;
     margin-top: auto;
-    padding: 8px;
+    padding: 5px 8px;
     z-index: 1;
 
     &:last-child {
@@ -140,5 +161,50 @@
 
     &:first-child {
         margin-left: 0;
+    }
+}
+
+// ---- filter
+
+.todo-filter {
+    position: relative;
+    &:before {
+        background: url(../images/search.svg) 0 0 no-repeat;
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        content: '';
+        vertical-align: baseline;
+        opacity: 0.35;
+        margin-right: 10px;
+    }
+}
+
+.todo-filter-clear {
+    //TODO [dkchv]: change icon
+    background: url(../images/search.svg) 0 0 no-repeat;
+    display: none;
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    margin-top: -6px;
+    width: 12px;
+    height: 12px;
+    content: '';
+    vertical-align: baseline;
+    opacity: 0.35;
+    cursor: pointer;
+}
+
+.todo-filter-input {
+    font-size: 14px;
+    padding: 5px 25px 5px 10px;
+    border-radius: 2px;
+    border: none;
+    box-shadow: inset 0 1px 4px #888;
+
+    &:focus + .todo-filter-clear,
+    &:valid + .todo-filter-clear { //some css magic
+        display: block;
     }
 }
