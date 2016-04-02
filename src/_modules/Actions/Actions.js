@@ -3,6 +3,7 @@
 var ActionsView = require('./ActionsView');
 var QuickAddForm = require('../QuickAddForm/QuickAddForm');
 
+
 function Actions() {
     this.view = new ActionsView(this);
     this.quickAddForm = new QuickAddForm();
