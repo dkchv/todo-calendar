@@ -16,8 +16,13 @@ var ViewBase = Backbone.View.extend({
     rendered: false,
 
     render: function () {
+        var data = {};
+        if (this.model) {
+            data = this.model.toJSON();
+        }
+
         if (!this.rendered) {
-            this.$el.html(this.template());
+            this.$el.html(this.template(data));
         }
         this.rendered = true;
         return this;

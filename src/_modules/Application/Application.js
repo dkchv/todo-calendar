@@ -6,12 +6,20 @@ var Filter = require('../Filter/Filter');
 var Actions = require("../Actions/Actions");
 var DateSelector = require('../DateSelector/DateSelector');
 var CalendarGrid = require('../CalendarGrid/CalendarGrid');
+var MonthModel = require('./models/MonthModel');
 
 function Application() {
+
+    //models
+    this.monthModel = new MonthModel();
+
+    //views
     this.appView = new AppView();
+
+    //components
     this.filter = new Filter();
     this.actions = new Actions();
-    this.dateSelector = new DateSelector();
+    this.dateSelector = new DateSelector(this.monthModel);
     this.calendarGrid = new CalendarGrid();
 }
 
