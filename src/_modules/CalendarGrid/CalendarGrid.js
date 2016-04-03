@@ -2,8 +2,11 @@
 
 var CalendarGridView = require('./CalendarGridView');
 
-function CalendarGrid() {
-    this.view = new CalendarGridView();
+function CalendarGrid(monthModel) {
+    this.monthModel = monthModel;
+    this.view = new CalendarGridView({
+        model: monthModel
+    });
 }
 
 module.exports = CalendarGrid;

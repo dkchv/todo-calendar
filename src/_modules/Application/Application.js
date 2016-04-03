@@ -20,7 +20,7 @@ function Application() {
     this.filter = new Filter();
     this.actions = new Actions();
     this.dateSelector = new DateSelector(this.monthModel);
-    this.calendarGrid = new CalendarGrid();
+    this.calendarGrid = new CalendarGrid(this.monthModel);
 }
 
 Application.prototype.start = function() {
