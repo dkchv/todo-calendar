@@ -7,11 +7,16 @@ var Actions = require("../Actions/Actions");
 var DateSelector = require('../DateSelector/DateSelector');
 var CalendarGrid = require('../CalendarGrid/CalendarGrid');
 var MonthModel = require('./models/MonthModel');
+var TodoCollection = require('./collections/TodoCollections');
+var stubTodo = require('./stubTodo');
 
 function Application() {
 
     //models
     this.monthModel = new MonthModel();
+
+    //collections
+    this.todoCollection = new TodoCollection();
 
     //views
     this.appView = new AppView();
@@ -29,6 +34,8 @@ Application.prototype.start = function() {
     this.appView.regions.header.append(this.actions);
     this.appView.regions.header.append(this.filter);
     this.appView.show();
+
+    this.todoCollection.push(stubTodo);
 };
 
 module.exports = Application;

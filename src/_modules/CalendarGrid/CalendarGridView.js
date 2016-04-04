@@ -2,14 +2,14 @@
 "use strict";
 
 var ViewBase = require('../ViewBase');
-var template = require('./CalendarGrid.jade');
+//var template = require('./CalendarGrid.jade');
 var $ = require('jquery');
-var DayView = require('./DayView');
+var DayView = require('./Day/DayView');
 var Backbone = require('backbone');
 
 var CalendarGridView = ViewBase.extend({
     //template: template,
-    template: function () {},
+    //template: function () {},
     className: 'todo-calendar-content',
 
     WEEK_CLASS: 'todo-calendar-week',
@@ -26,7 +26,6 @@ var CalendarGridView = ViewBase.extend({
         var firstDayNumber = this.model.get('firstDayNumber') - 1;
 
         var weekDay;
-        var $emptyDay, $day;
         var dayView;
         var i, ii;
 
@@ -55,7 +54,8 @@ var CalendarGridView = ViewBase.extend({
             dayView = new DayView({
                 model: new Backbone.Model({
                     num: i+1,
-                    item: new Backbone.Model({})
+                    item: new Backbone.Model({}),
+                    weekend: weekDay > 4
                 })
             });
 
