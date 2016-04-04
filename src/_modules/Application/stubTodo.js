@@ -1,5 +1,5 @@
 
-var stubTodo = [
+module.exports = [
     {
         id: '1',
         title: 'One',
@@ -15,5 +15,3 @@ var stubTodo = [
         date: new Date(2016, 3, 12)
     }
 ];
-
-module.exports = stubTodo;

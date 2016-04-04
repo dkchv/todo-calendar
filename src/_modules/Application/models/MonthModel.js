@@ -34,6 +34,7 @@ var MonthModel = Backbone.Model.extend({
             curMonth: month,
             curFullDateLocale: curMonthLocale + ' ' + year,
             firstDay: firstDay,
+            lastDay: lastDay,
             firstDayNumber: firstDay.getDay(),
             daysCount: lastDay.getDate()
         });

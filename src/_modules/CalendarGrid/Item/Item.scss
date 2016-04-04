@@ -1,0 +1,35 @@
+.todo-item {
+
+}
+
+.todo-item-title {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.todo-item-with {
+    font-size: 10px;
+    span {
+        font-size: inherit;
+        cursor: pointer;
+
+        &:hover {
+            color: $item-hover-c;
+        }
+
+        &:before {
+            content: "@";
+            display: inline;
+        }
+
+        &:after {
+            content: ", ";
+            display: inline;
+        }
+
+        &:last-child:after {
+            display: none;
+        }
+    }
+}

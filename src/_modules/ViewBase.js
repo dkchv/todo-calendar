@@ -7,8 +7,9 @@ var ViewBase = Backbone.View.extend({
 
     component: null,
 
-    initialize: function(component) {
-        this.component = component;
+    initialize: function(options) {
+        options = options || {};
+        this.component = options.component;
         this.render();
         this.initRegions();
     },
@@ -16,19 +17,14 @@ var ViewBase = Backbone.View.extend({
     rendered: false,
 
     render: function () {
-        if (!this.template) {
-            return this;
-        }
+        if (this.rendered) { return this; }
+        this.rendered = true;
 
         var data = {};
         if (this.model) {
             data = this.model.toJSON();
         }
-
-        if (!this.rendered) {
-            this.$el.html(this.template(data));
-        }
-        this.rendered = true;
+        this.$el.html(this.template(data));
         return this;
     },
 

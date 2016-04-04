@@ -9,6 +9,7 @@ var CalendarGrid = require('../CalendarGrid/CalendarGrid');
 var MonthModel = require('./models/MonthModel');
 var TodoCollection = require('./collections/TodoCollections');
 var stubTodo = require('./stubTodo');
+var FormAdd = require('../ItemAddForm/ItemAddForm');
 
 function Application() {
 
@@ -24,8 +25,9 @@ function Application() {
     //components
     this.filter = new Filter();
     this.actions = new Actions();
+    this.formAdd = new FormAdd();
     this.dateSelector = new DateSelector(this.monthModel);
-    this.calendarGrid = new CalendarGrid(this.monthModel);
+    this.calendarGrid = new CalendarGrid(this.monthModel, this.todoCollection, this.formAdd);
 }
 
 Application.prototype.start = function() {
