@@ -10,8 +10,11 @@ var DateSelectorView = ViewBase.extend({
 
     $date: null,
 
+    //monthModel: null,
+
     initialize: function (options) {
         ViewBase.prototype.initialize.call(this, options);
+        //this.monthModel = options.monthModel;
         this.render();
         this.$date = this.$('.todo-date-date');
         this.listenTo(this.model, 'change:curFullDateLocale', this.onChangeDate);

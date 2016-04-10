@@ -3,6 +3,7 @@
 
 var ViewBase = require('../ViewBase');
 var template = require('./ActionsView.jade');
+var QuickAddFormView = require('../QuickAddForm/QuickAddFormView');
 
 var ActionsView = ViewBase.extend({
     template: template,
@@ -12,11 +13,14 @@ var ActionsView = ViewBase.extend({
     },
 
     regions: {
-        quickAdd: '.todo-header-buttons-quick-add-form'
+        quickAdd: '.todo-quick-add-form'
     },
 
+    quickAddFormView: new QuickAddFormView(),
+
     onClickAdd: function () {
-        this.component.showQuickAddForm();
+        console.log('ActionsView#onClickAdd', this.quickAddFormView);
+        this.regions.quickAdd.append(this.quickAddFormView);
     }
 });
 

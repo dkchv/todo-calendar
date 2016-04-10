@@ -6,7 +6,7 @@ var Backbone = require('backbone');
 var TodoModel = Backbone.Model.extend({
     defaults: {
         //title: 'Title',
-        //description: 'Description',
+        description: '',
         date: new Date(),
         people: []
     }

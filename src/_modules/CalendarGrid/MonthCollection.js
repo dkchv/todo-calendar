@@ -9,7 +9,6 @@ var MonthCollection = Backbone.Collection.extend({
 
     constructor: function (todoCollection, monthModel) {
         this.todoCollection = todoCollection;
-        //this.listenTo(todoCollection, 'change', this.onChange);
         this.listenTo(todoCollection, 'add', this.onAdd);
 
         this.monthModel = monthModel;

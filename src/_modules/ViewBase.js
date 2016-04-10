@@ -2,28 +2,40 @@
 
 var Backbone = require('backbone');
 var Region = require('./Region');
+var $ = require('jquery');
 
 var ViewBase = Backbone.View.extend({
 
-    component: null,
+    $df: $(document.createDocumentFragment()),
 
-    initialize: function(options) {
-        options = options || {};
-        this.component = options.component;
+
+    initialize: function() {
+        //options = options || {};
+        //this.component = options.component;
         this.render();
         this.initRegions();
     },
 
     rendered: false,
 
-    render: function () {
-        if (this.rendered) { return this; }
+    render: function (force) {
+        if (this.rendered && !force) { return this; }
         this.rendered = true;
 
         var data = {};
         if (this.model) {
             data = this.model.toJSON();
         }
+
+        if (this.templateHelpers) {
+            //bind helpers to data
+            for(var helper in this.templateHelpers) {
+                if(this.templateHelpers.hasOwnProperty(helper)) {
+                    data[helper] = this.templateHelpers[helper].bind(this);
+                }
+            }
+        }
+
         this.$el.html(this.template(data));
         return this;
     },
@@ -33,6 +45,8 @@ var ViewBase = Backbone.View.extend({
     hide: function () {
         if (this.parentRegion) {
             this.parentRegion.hide();
+        } else {
+            this.$df.append(this.$el);
         }
     },
 
@@ -42,7 +56,8 @@ var ViewBase = Backbone.View.extend({
         for (var regionName in this.regions) {
             if (this.regions.hasOwnProperty(regionName)) {
                 var className = this.regions[regionName];
-                var $el = this.$(className);
+                var $el = className === 'el' ? this.$el : this.$(className);
+
                 this.regions[regionName] = new Region($el);
             }
         }

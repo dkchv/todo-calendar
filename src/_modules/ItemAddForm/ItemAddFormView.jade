@@ -1,8 +1,8 @@
 .todo-form-add-close
-input.todo-form-add-input-title(placeholder="Событие", value=title)
-.todo-form-add-input-date= date.getDate() + ' ' + date.toLocaleString('ru-ru', {month: 'long'})
-input.todo-form-add-input-people(placeholder="Имена участников", value=people.join(', '))
+input.todo-form-add-input-title(placeholder="Событие", value=getTitle(), required)
+.todo-form-add-input-date= currentDate()
+input.todo-form-add-input-people(placeholder="Имена участников", value=peoples())
 textarea.todo-form-add-input-description(placeholder="Описание")
-    = description
+    = getDescription()
 button.todo-form-add-button-submit Готово
 button.todo-form-add-button-delete Удалить

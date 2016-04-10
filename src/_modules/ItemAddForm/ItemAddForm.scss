@@ -40,6 +40,15 @@
 .todo-form-add-input-title {
     @extend %form-input-base;
     font-size: 14px;
+
+    &:invalid {
+        border: 1px solid red;
+        margin-bottom: 4px;
+        margin-top:-1px;
+    }
+    &:invalid:focus {
+        outline-color: red;
+    }
 }
 
 .todo-form-add-input-date,

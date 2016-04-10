@@ -1,7 +1,6 @@
 
 "use strict";
 
-//var Backbone = require('backbone');
 var template = require('./Day.jade');
 var ViewBase = require('../../ViewBase');
 var ItemView = require('../Item/ItemView');
@@ -14,19 +13,16 @@ var DayView = ViewBase.extend({
 
     $item: null,
     itemView: null,
-
-    $formAdd: null,
-    formAdd: null,
+    itemAddFormView: null,
 
     events: {
         'click': 'onClick'
     },
 
     initialize: function(options) {
-        ViewBase.prototype.initialize.call(this, options);
-        this.formAdd = options.formAdd;
+        ViewBase.prototype.initialize.call(this);
+        this.itemAddFormView = options.itemAddFormView;
         this.listenTo(this.model, 'change:item', this.onChangeItem);
-        this.render();
         this.$item = this.$('.todo-item');
     },
 
@@ -53,27 +49,25 @@ var DayView = ViewBase.extend({
     },
 
     onChangeItem: function () {
-
         var item = this.model.get('item');
+
         if (item) {
-            var itemView = new ItemView({
-                model: this.model.get('item')
+            this.itemView = new ItemView({
+                model: item
             });
-            this.$item.append(itemView.render().$el);
+            this.$item.append(this.itemView.render().$el);
         } else {
-            //this.itemView.destroy();
+            this.itemView.$el.remove();
             this.itemView = null;
-            this.$item = null;
         }
         this.$el.toggleClass(this.ACTIVE_CLASS);
-        console.log('DayView#onChangeItem', this.$item);
     },
 
     onClick: function () {
-        var item = this.model.get('item');
-        this.formAdd.update({
+        if (!this.itemAddFormView) { return; }
+        this.itemAddFormView.update({
             dayView: this,
-            item: item
+            model: this.model
         });
     },
 
