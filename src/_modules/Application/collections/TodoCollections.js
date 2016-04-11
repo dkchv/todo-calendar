@@ -12,6 +12,14 @@ var TodoCollections = Backbone.Collection.extend({
             var date = item.get('date');
             return date >= month.get('firstDay') && date < month.get('lastDay');
         });
+    },
+
+    getItemsForQuery: function (query) {
+        var re = new RegExp(query, 'gi');
+        return this.filter(function (item) {
+            var title = item.get('title');
+            return re.test(title);
+        });
     }
 });
 

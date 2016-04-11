@@ -5,12 +5,14 @@ var ViewBase = require('../ViewBase');
 var $ = require('jquery');
 var DayView = require('./Day/DayView');
 var DayModel = require('./Day/DayModel');
+var eventAggregator = require('../Application/EventAggregator');
 
 var CalendarGridView = ViewBase.extend({
     className: 'todo-calendar-content',
 
     WEEK_CLASS: 'todo-calendar-week',
 
+    today: new Date(),
     days: [],
     emptyDays: [],
 
@@ -21,6 +23,14 @@ var CalendarGridView = ViewBase.extend({
         ViewBase.prototype.initialize.call(this, options);
         this.listenTo(this.collection, 'add', this.onAdd);
         this.listenTo(this.collection, 'reset', this.onChangeDate);
+        eventAggregator.on('jumpToItem', this.onJump, this);
+    },
+
+    onJump: function (model) {
+        var date = model.get('date');
+        var day = date.getDate();
+        var dayView =  this.days[day - 1];
+        dayView.$el.trigger('click');
     },
 
     render: function () {
@@ -32,6 +42,7 @@ var CalendarGridView = ViewBase.extend({
     },
 
     buildGrid: function () {
+        console.log('CalendarGridView#render');
         var daysCount = this.model.get('daysCount');
         var firstDayNumber = (this.model.get('firstDayNumber') + 6) % 7;
 
@@ -85,6 +96,15 @@ var CalendarGridView = ViewBase.extend({
         }
 
         //setToday
+        this.hightlightToday();
+    },
+
+    hightlightToday: function () {
+        var today = this.model.get('today');
+        if (today > this.model.get('firstDay') && today < this.model.get('lastDay')) {
+            var dayView = this.days[ today.getDate() ];
+            dayView.setToday();
+        }
     },
 
     onChangeDate: function (collection) {

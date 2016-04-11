@@ -1,4 +1,30 @@
 .todo-quick-add-form {
     position: absolute;
+}
 
+.todo-quick-add-form-container {
+    position: absolute;
+    margin-top: 15px;
+    width: 250px;
+    padding: $container-p;
+    background-color: #fff;
+    box-shadow: $container-shadow;
+}
+
+.todo-quick-add-form-input {
+    width: 100%;
+    @extend %form-input-base;
+    margin-bottom:10px;
+}
+
+.todo-quick-add-form-close {
+    @extend %form-close;
+}
+
+.todo-quick-add-from-submit {
+    @extend %form-buttons-base;
+
+    &:hover {
+        background: rgba( $c_success, 0.2);
+    }
 }

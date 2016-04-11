@@ -10,6 +10,7 @@ var DayView = ViewBase.extend({
 
     ACTIVE_CLASS: 'todo-day-active',
     SELECTED_CLASS: 'todo-day-selected',
+    TODAY_CLASS: 'todo-day-today',
 
     $item: null,
     itemView: null,
@@ -37,9 +38,9 @@ var DayView = ViewBase.extend({
             classes.push(this.ACTIVE_CLASS);
         }
 
-        if (this.model.get('today')) {
-            classes.push('todo-day-today');
-        }
+        //if (this.model.get('today')) {
+        //    classes.push(this.TODAY_CLASS);
+        //}
 
         if (!this.model.get('num')) {
             classes.push('todo-day-empty');
@@ -76,6 +77,10 @@ var DayView = ViewBase.extend({
     },
     select: function () {
         this.$el.addClass(this.SELECTED_CLASS);
+    },
+
+    setToday: function () {
+        this.$el.addClass(this.TODAY_CLASS);
     }
 });
 

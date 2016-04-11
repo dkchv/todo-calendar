@@ -95,12 +95,12 @@ var ItemAddFormView = ViewBase.extend({
             this.dayView = options.dayView;
             this.dayView.select();
             this.model = options.model;
-            console.log('ItemAddFormView#update', options.model);
             this.rendered = false;
             this.dayView.$el.append(this.render().$el);
         }
     },
 
+    //TODO: refactor DayModel with full date
     getCurrentDate: function () {
         var currentDate;
         var year, month, day;
@@ -146,7 +146,7 @@ var ItemAddFormView = ViewBase.extend({
             return item ? item.get('title') : '';
         },
         getDescription: function () {
-            var item = this.model.get('description');
+            var item = this.model.get('item');
             return item ? item.get('description') : '';
         }
     }

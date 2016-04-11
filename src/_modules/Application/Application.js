@@ -25,7 +25,9 @@ function Application() {
 
     //views
     this.appView = new AppView();
-    this.filterView = new FilterView();
+    this.filterView = new FilterView({
+        collection: this.todoCollection
+    });
     this.actionsView = new ActionsView();
     this.itemAddFormView = new ItemAddFormView({
         model: new DayModel(),

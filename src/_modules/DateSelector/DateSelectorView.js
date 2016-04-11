@@ -10,8 +10,6 @@ var DateSelectorView = ViewBase.extend({
 
     $date: null,
 
-    //monthModel: null,
-
     initialize: function (options) {
         ViewBase.prototype.initialize.call(this, options);
         //this.monthModel = options.monthModel;

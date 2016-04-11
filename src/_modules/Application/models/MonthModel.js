@@ -2,12 +2,21 @@
 "use strict";
 
 var Backbone = require('backbone');
+var eventAggregator = require('../EventAggregator');
+
 
 var MonthModel = Backbone.Model.extend({
     initialize: function() {
         var today = new Date();
         this.set({ today: today });
         this.setNewDate(today);
+        eventAggregator.on('jumpToItem', this.onJump, this);
+    },
+
+    onJump: function (model) {
+        var date = model.get('date');
+        this.setNewDate(date);
+        console.log('MonthModel#onJump', model);
     },
 
     incrementMonth: function () {

@@ -1,0 +1,62 @@
+.todo-filter-result {
+    position: absolute;
+    background-color: #fff;
+    z-index: 2;
+    left: 22px;
+    top: 100%;
+    margin-top: 15px;
+    width: 100%;
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding:5px;
+    box-shadow: $container-shadow;
+}
+
+.todo-result-item {
+    padding: 5px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+        background-color: lighten($c_active, 10%);
+
+        & * {
+            color: #fff;
+        }
+
+        //fix hover
+        & .todo-result-item-title:after {
+            background-image: linear-gradient(to right, rgba($c_active, 0), rgba($c_active, 1));
+        }
+    }
+
+    &:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+    }
+}
+
+.todo-result-item-title {
+    font-size: 12px;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+
+    &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        background-image: linear-gradient(to right, rgba(#fff, 0), rgba(#fff, 1));
+        width: 40px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
+
+.todo-result-item-date {
+    font-size: 10px;
+    color: #999
+}

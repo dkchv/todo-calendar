@@ -8,7 +8,7 @@ var QuickAddFormView = ViewBase.extend({
     template: template,
 
     events: {
-        'click .todo-quick-add-close': 'onCloseClick'
+        'click .todo-quick-add-form-close': 'onCloseClick'
     },
 
     onCloseClick: function () {

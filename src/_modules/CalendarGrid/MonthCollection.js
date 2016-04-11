@@ -25,7 +25,12 @@ var MonthCollection = Backbone.Collection.extend({
     },
 
     onAdd: function (model) {
-        this.push(model);
+        var date = model.get('date');
+        if (date > this.monthModel.get('firstDay') && date < this.monthModel.get('lastDay')) {
+            console.log('MonthCollection#onAdd');
+            this.add(model);
+        }
+
     }
 });
 
